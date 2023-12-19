@@ -1,0 +1,3 @@
+
+data/cryptopunks/*.jpg
+src/__pycache__/
