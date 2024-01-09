@@ -132,6 +132,21 @@ class ModelTrainer:
             print(f"Saving model at epoch {epoch}")
             torch.save(self.model.state_dict(), os.path.join(hyperparams.save_path, "model.pth"))
             self.min_loss = loss
+
+    def load(self, weights):
+        self.model.load_state_dict(torch.load(weights))
+        self.model.to(self.device)
+
+    def generate_images(self, weights):
+        self.load(weights)
+        self.model.eval()
+
+        # TODO: ADD Inference Loop to generate new images.
+
+
+
+
+
         
 
         
