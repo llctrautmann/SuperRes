@@ -1,14 +1,5 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import numpy as np
-import os
-import matplotlib.pyplot as plt
-import torchvision
-import torchvision.transforms as transforms
-from torch.utils.data import Dataset, DataLoader
-from datasets import load_dataset
-import datasets as ds
 from hyperparams import hyperparams
 
 class DenseBlock(nn.Module):
@@ -57,7 +48,7 @@ class SuperResolution(nn.Module):
 
         # Upsampling
         self.upsampling = nn.Sequential(
-            nn.ConvTranspose2d(256, 256, kernel_size=3, stride=2, padding=1, output_padding=1), 
+            nn.ConvTranspose2d(256, 256, kernel_size=3, stride=2, padding=1, output_padding=1),
             nn.BatchNorm2d(256),
             nn.ReLU(inplace=True),
             nn.ConvTranspose2d(256, 256, kernel_size=3, stride=2, padding=1, output_padding=1),
@@ -96,4 +87,3 @@ if __name__ == "__main__":
         print("Dimensionality Testing Passed!")
     else:
         model = SuperResolution()
-        

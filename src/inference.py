@@ -1,7 +1,4 @@
 
-from hyperparams import hyperparams
-from dataset import Contrastive_Dataset
-from model import SuperResolution
 import torch
 
 class Inference:
@@ -19,7 +16,7 @@ class Inference:
             print("Model loaded successfully")
         else:
             print("No model loaded")
-    
+
     def infer(self, img):
         assert img.shape[1:] == (3, 64, 64)
         with torch.no_grad():

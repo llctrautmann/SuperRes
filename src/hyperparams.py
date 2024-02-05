@@ -1,7 +1,5 @@
 from dataclasses import dataclass
-from torch.utils.tensorboard import SummaryWriter
 import torch
-import os
 
 
 @dataclass
