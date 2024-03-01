@@ -37,7 +37,7 @@ class SuperResolution(nn.Module):
         # Dense Blocks
         self.dense_blocks = nn.ModuleList()
         for block_size in [int(x) for x in self.channel_list][:-1]:
-            self.dense_blocks.append(DenseBlock(block_size))
+            self.dense_blocks.append(DenseBlock(in_channels=block_size))
 
         # 1 x 1 Convolution
         self.conv1x1 = nn.Sequential(
@@ -57,12 +57,11 @@ class SuperResolution(nn.Module):
             nn.Conv2d(256, 3, kernel_size=3, stride=1, padding=1)
             )
 
-
     def forward(self, x):
         # Initial Layer
         x = self.initial_layer(x)
         # Dense Blocks
-        for i, block in enumerate(self.dense_blocks):
+        for _, block in enumerate(self.dense_blocks):
             x = block(x)
         # 1 x 1 Convolution
         x = self.conv1x1(x)

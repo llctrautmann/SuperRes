@@ -1,6 +1,7 @@
 
 import torch
 
+
 class Inference:
     def __init__(self, model, device, load_model, model_path):
         self.model = model
